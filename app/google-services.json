@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "464704755704",
+    "project_id": "renewme-9edb5",
+    "storage_bucket": "renewme-9edb5.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:464704755704:android:6076ede7df0ce16251e80d",
+        "android_client_info": {
+          "package_name": "com.renewme.renewme"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCGD-Awhq6DMFXgnq_KcgVbTTlEioIDcRo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
