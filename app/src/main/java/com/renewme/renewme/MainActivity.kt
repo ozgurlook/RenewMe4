@@ -5,21 +5,15 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
 import androidx.compose.runtime.*
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.renewme.renewme.ui.theme.RenewMeTheme
 import com.renewme.renewme.onboarding.OnboardingScreen
 import com.renewme.renewme.userdata.UserDataScreen
-import com.renewme.renewme.userdata.UserData
 import com.renewme.renewme.login.LoginScreen
 import com.renewme.renewme.auth.AuthViewModel
 import com.renewme.renewme.register.RegisterScreen
+import com.renewme.renewme.home.HomeScreen
 
 class MainActivity : ComponentActivity() {
     private val authViewModel: AuthViewModel by viewModels()
@@ -41,6 +35,7 @@ class MainActivity : ComponentActivity() {
                 var showOnboarding by remember { mutableStateOf(true) }
                 var showUserData by remember { mutableStateOf(false) }
                 var showRegister by remember { mutableStateOf(false) }
+                var showHome by remember { mutableStateOf(false) }
                 
                 when {
                     showOnboarding -> {
@@ -64,7 +59,7 @@ class MainActivity : ComponentActivity() {
                             viewModel = authViewModel,
                             onLoginSuccess = {
                                 showLogin = false
-                                // TODO: Ana ekrana git
+                                showHome = true
                             },
                             onRegisterClick = {
                                 showLogin = false
@@ -77,7 +72,7 @@ class MainActivity : ComponentActivity() {
                             viewModel = authViewModel,
                             onRegisterSuccess = {
                                 showRegister = false
-                                // TODO: Ana ekrana git
+                                showHome = true
                             },
                             onBackToLogin = {
                                 showRegister = false
@@ -85,32 +80,14 @@ class MainActivity : ComponentActivity() {
                             }
                         )
                     }
+                    showHome -> {
+                        HomeScreen()
+                    }
                     else -> {
-                        Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                            Greeting(
-                                name = "Android",
-                                modifier = Modifier.padding(innerPadding)
-                            )
-                        }
+                        HomeScreen()
                     }
                 }
             }
         }
-    }
-}
-
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    RenewMeTheme {
-        Greeting("Android")
     }
 }
